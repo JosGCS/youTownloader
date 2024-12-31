@@ -40,13 +40,13 @@ echo ================================================
 echo Descargando y convirtiendo el video...
 echo ================================================
 yt-dlp -o "C:\Users\josep\Music\%%(title)s.%%(ext)s" ^
-       %videoURL% ^
+       "%videoURL%" ^
        -x --audio-format %audio_format% ^
        --ffmpeg-location "C:\ffmpeg\bin" ^
        --restrict-filenames
 
 :: Obtener el nombre del archivo descargado
-for /f "delims=" %%A in ('yt-dlp --get-filename -o "C:\Users\josep\Music\%%(title)s.%extension%" %videoURL% --restrict-filenames') do set "downloadedFile=%%A"
+for /f "delims=" %%A in ('yt-dlp --get-filename -o "C:\Users\josep\Music\%%(title)s.%extension%" "%videoURL%" --restrict-filenames') do set "downloadedFile=%%A"
 
 :: Extraer solo el nombre del archivo sin la ruta
 for %%F in ("%downloadedFile%") do set "fileName=%%~nF"
